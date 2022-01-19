@@ -4,7 +4,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .visually-hidden {
@@ -49,6 +49,19 @@ body {
 .wrapperCheckboxes {}
 
 .dropDown {}
+
+.customOption {
+    display: flex;
+    align-items: center;
+    margin: 6px 0 6px 0px
+}
+
+.customChexbox {}
+
+.customChexboxTitle {
+    margin: 0;
+    padding-left: 15px;
+}
 
 .wrapperButtons {
     width: 100%;

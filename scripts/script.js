@@ -1,6 +1,8 @@
 let searchField = document.querySelector('.searchField'),
     select = document.querySelector('select'),
-    optionInSelect = document.querySelectorAll('option')
+    optionInSelect = document.querySelectorAll('option'),
+
+    optionsData = []
 
 
 // const products = {
@@ -37,19 +39,43 @@ searchField.addEventListener('click', () => {
 })
 
 function optionIsSelected() {
-    for (var i = 0; i < optionInSelect.length; i++) {
+    for (let i = 0; i < optionInSelect.length; i++) {
         if (optionInSelect[i].selected)
             console.log(optionInSelect[i])
     }
 }
 
-function catchOptionsData() {
-    let optionsData = []
-    for (var i = 0; i < optionInSelect.length; i++) {
-        optionsData.push(optionInSelect[i].text)
+function catchOptionsData(arr) {
+
+    for (let i = 0; i < optionInSelect.length; i++) {
+        arr.push(optionInSelect[i].text)
+
     }
-    console.log(optionsData)
+    return
+
+}
+
+function generateCustomOptions(items) {
+    items.map((text) => (
+
+        customOption = document.createElement('div'),
+        customOption.className = 'customOption',
+
+        customChexbox = document.createElement('input'),
+        customChexbox.setAttribute('type', 'checkbox'),
+        customChexbox.className = 'customChexbox',
+
+        customOptionTitle = document.createElement('p'),
+        customOptionTitle.className = 'customChexboxTitle',
+        customOptionTitle.innerHTML = text,
+
+
+        document.querySelector('.dropDown').append(customOption),
+        customOption.append(customChexbox, customOptionTitle)
+
+    ))
 }
 
 optionIsSelected()
-catchOptionsData()
+catchOptionsData(optionsData)
+generateCustomOptions(optionsData)
