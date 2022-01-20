@@ -1,51 +1,34 @@
 let searchField = document.querySelector('.searchField'),
     select = document.querySelector('select'),
     optionInSelect = document.querySelectorAll('option'),
-
-    optionsData = []
-
-
-// const products = {
-//     "A": "[A] - Продукция сельского хозяйства, лесного хозяйства рыбоводства и рыболовства",
-//     "О": "[О] - Услуги в области государственного управления и обороны, предоставляемые обществу в целом; услуги по обязательному социальному страхованию",
-//     "84": {
-//         "84": "[84] - Услуги в области государственного управления и обороны, предоставляемые обществу в целом; услуги по обязательному социальному страхованию",
-//         "84.1": {
-//             "84.1": "[84.1] - Услуги в области государственного управления общего характера и социально-экономической сфере",
-//             "84.11": {
-//                 "84.11": "[84.11] - Услуги в области государственного управления общего характера",
-//                 "84.11.11": {
-//                     "84.11.11": "[84.11.11] - Услуги в области исполнительной и законодательной деятельности",
-//                     "84.11.11.100": {
-//                         "84.11.11.100": "[84.11.11.100] - Услуги центральных органов исполнительной и законодательной власти",
-//                         "84.11.11.200": "[84.11.11.200] - Услуги органов управления и самоуправления областного территориального уровня",
-//                         "84.11.11.300": "[84.11.11.300] - Услуги органов управления и самоуправления базового территориального уровня"
-//                     }
-//                 },
-//                 "84.11.12": "[84.11.12] - Услуги в области государственного управления общего характера"
-//             }
-//         }
-//     }
-// }
+    optionsDataText = []
 
 
-
-
-// document.querySelector('select').remove()
 searchField.setAttribute('placeholder', "Код ОКРБ или наименование закупаемой продукции")
 searchField.addEventListener('click', () => {
     console.log('clck')
 
 })
 
-function isSelected(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        console.log(arr[i].dataset.level)
-        if (arr[i].selected)
-            console.log(arr[i])
+
+function isSelected(arr1, arr2) {
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i].selected) {
+            var a = i
+            console.log(arr1[i])
+            for (var j = 0; j < arr2.length; j++) {
+                if(a === j){
+                    arr2[i].classList.toggle('selected')
+                    console.log( j + ' add cls')
+                }
+                    
+                }
+        }
+            
     }
+        
     return
-    
+
 }
 
 function catchOptionsData(arr) {
@@ -60,17 +43,17 @@ function catchOptionsData(arr) {
 
 function generateCustomOptions(items) {
     items.map((text) => (
-
         customOption = document.createElement('div'),
         customOption.className = 'customOption',
+
 
         customCheckBoxInput = document.createElement('input'),
         customCheckBoxInput.setAttribute('type', 'checkbox'),
         customCheckBoxInput.className = 'customChexboxInput',
-        customCheckBoxInput.id = 'customChexboxInput'+Math.floor(Math.random()*999),
+        customCheckBoxInput.id = 'customChexboxInput' + Math.floor(Math.random() * 999),
 
         customCheckBoxLabel = document.createElement('label'),
-        customCheckBoxLabel.className='customCheckBoxLabel',
+        customCheckBoxLabel.className = 'customCheckBoxLabel',
         customCheckBoxLabel.setAttribute('for', `${customCheckBoxInput.id}`),
 
         customOptionTitle = document.createElement('p'),
@@ -84,6 +67,10 @@ function generateCustomOptions(items) {
     ))
 }
 
-isSelected(optionInSelect)
-catchOptionsData(optionsData)
-generateCustomOptions(optionsData)
+
+catchOptionsData(optionsDataText)
+generateCustomOptions(optionsDataText)
+
+newCustomOptions = document.querySelectorAll('.customOption')
+
+isSelected(optionInSelect, newCustomOptions)
