@@ -16,9 +16,11 @@ let isSelected = (arr1, arr2) => {
             for (var j = 0; j < arr2.length; j++) {
                 if (a === j) {
                     arr2[j].classList.toggle('selected')
+                    var child = arr2[j].querySelector('input')
+                    console.log(child)
                 }
                 if (arr2[j].classList.contains('selected')) {
-                    document.querySelector('.customChexboxInput').checked = true
+                    child.checked = true
                 }
             }
         }
@@ -64,8 +66,7 @@ let addChecker = (items) => {
             if (!items[i].classList.contains('selected')) {
                 items[i].classList.toggle('selected')
                 child.checked = true
-            }
-            else {
+            } else {
                 child.checked = false
                 items[i].classList.toggle('selected')
             }
