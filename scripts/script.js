@@ -38,11 +38,14 @@ searchField.addEventListener('click', () => {
 
 })
 
-function optionIsSelected() {
-    for (let i = 0; i < optionInSelect.length; i++) {
-        if (optionInSelect[i].selected)
-            console.log(optionInSelect[i])
+function isSelected(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i].dataset.level)
+        if (arr[i].selected)
+            console.log(arr[i])
     }
+    return
+    
 }
 
 function catchOptionsData(arr) {
@@ -61,9 +64,14 @@ function generateCustomOptions(items) {
         customOption = document.createElement('div'),
         customOption.className = 'customOption',
 
-        customChexbox = document.createElement('input'),
-        customChexbox.setAttribute('type', 'checkbox'),
-        customChexbox.className = 'customChexbox',
+        customCheckBoxInput = document.createElement('input'),
+        customCheckBoxInput.setAttribute('type', 'checkbox'),
+        customCheckBoxInput.className = 'customChexboxInput',
+        customCheckBoxInput.id = 'customChexboxInput'+Math.floor(Math.random()*999),
+
+        customCheckBoxLabel = document.createElement('label'),
+        customCheckBoxLabel.className='customCheckBoxLabel',
+        customCheckBoxLabel.setAttribute('for', `${customCheckBoxInput.id}`),
 
         customOptionTitle = document.createElement('p'),
         customOptionTitle.className = 'customChexboxTitle',
@@ -71,11 +79,11 @@ function generateCustomOptions(items) {
 
 
         document.querySelector('.dropDown').append(customOption),
-        customOption.append(customChexbox, customOptionTitle)
+        customOption.append(customCheckBoxInput, customCheckBoxLabel, customOptionTitle)
 
     ))
 }
 
-optionIsSelected()
+isSelected(optionInSelect)
 catchOptionsData(optionsData)
 generateCustomOptions(optionsData)
