@@ -1,38 +1,24 @@
 let searchField = document.querySelector('.searchField'),
     select = document.querySelector('select'),
     optionInSelect = document.querySelectorAll('option'),
-    optionsDataText = []
+    optionsDataText = [],
+    optionDataLevel = []
+
+
 
 searchField.setAttribute('placeholder', "Код ОКРБ или наименование закупаемой продукции")
 searchField.addEventListener('click', () => {
     console.log('clck')
 })
 
-// переделать
-let isSelected = (arr1, arr2) => {
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i].selected) {
-            var a = i
-            for (var j = 0; j < arr2.length; j++) {
-                if (a === j) {
-                    arr2[j].classList.toggle('selected')
-                    var child = arr2[j].querySelector('input')
-                    console.log(child)
-                }
-                if (arr2[j].classList.contains('selected')) {
-                    child.checked = true
-                }
-            }
+//Вытягиваем data-level и содержимое из html options 
+let catchOptionsData = () => {
+        for (let i = 0; i < optionInSelect.length; i++) {
+            optionsDataText.push(optionInSelect[i].text)
+            optionDataLevel.push(optionInSelect[i].dataset.level)
         }
     }
-}
-
-let catchOptionsData = (arr) => {
-    for (let i = 0; i < optionInSelect.length; i++) {
-        arr.push(optionInSelect[i].text)
-    }
-}
-
+    //Динамически отрисовываем подменные Options
 let generateCustomOptions = (items) => {
     items.map((text) => (
         customOption = document.createElement('div'),
@@ -59,6 +45,25 @@ let generateCustomOptions = (items) => {
 
 }
 
+// Приводим к общему виду html options с атрибутом selected
+let isSelected = (arr1, arr2) => {
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i].selected) {
+            var a = i
+            for (var j = 0; j < arr2.length; j++) {
+                if (a === j) {
+                    arr2[j].classList.toggle('selected')
+                    var child = arr2[j].querySelector('input')
+                }
+                if (arr2[j].classList.contains('selected')) {
+                    child.checked = true
+                }
+            }
+        }
+    }
+}
+
+// Добавляем чекеры на наши кастомные checkboxes
 let addChecker = (items) => {
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', () => {
@@ -74,7 +79,7 @@ let addChecker = (items) => {
     }
 }
 
-catchOptionsData(optionsDataText)
+catchOptionsData(optionsDataText, optionInSelect)
 generateCustomOptions(optionsDataText)
 newCustomOptions = document.querySelectorAll('.customOption')
 isSelected(optionInSelect, newCustomOptions)

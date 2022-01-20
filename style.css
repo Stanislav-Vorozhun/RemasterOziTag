@@ -18,7 +18,17 @@ body {
     align-items: center;
 }
 
-.header {}
+.wrapperHeader {
+    height: 123px;
+    width: 640px;
+    background: #FAFAFA;
+    box-shadow: 0px 1px 0px #D9D9D9;
+}
+
+.header {
+    padding-left: 25px;
+    margin-top: 7px;
+}
 
 .wrapperTitles {
     display: flex;
@@ -26,7 +36,9 @@ body {
     font-weight: 600;
 }
 
-.categorieTitle {}
+.categorieTitle {
+    font-size: 18px;
+}
 
 .choiceCountTitle {}
 
@@ -55,25 +67,16 @@ body {
     align-items: center;
     height: 48px;
     padding: 6px 26px 6px 26px;
-}
-
-.selected {
-    background: linear-gradient(0deg, rgba(3, 91, 119, 0.05), rgba(3, 91, 119, 0.05)), #FFFFFF;
+    cursor: pointer;
 }
 
 .customOption:hover {
     background-color: #70a5b9;
 }
 
-
-/* 
-
-
-.customChexboxInput:checked+.customCheckBoxLabel::before {
-    border-color: #0b76ef;
-    background-color: #0b76ef;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-} */
+.selected {
+    background: linear-gradient(0deg, rgba(3, 91, 119, 0.05), rgba(3, 91, 119, 0.05)), #FFFFFF;
+}
 
 .customChexboxInput {
     position: absolute;
@@ -108,8 +111,6 @@ body {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
 }
 
-
-
 .customChexboxTitle {
     margin: 0;
     padding: 6px 0px 6px 15px;
@@ -118,7 +119,7 @@ body {
 }
 
 .wrapperButtons {
-    width: 100%;
+    width: 640px;
     height: 60px;
     display: flex;
     align-items: center;
@@ -143,6 +144,10 @@ body {
     border-radius: 4px;
 }
 
-.acceptButton {}
+.acceptButton {
+    margin-left: 25px;
+}
 
-.deleteButton {}
+.deleteButton {
+    margin-right: 25px;
+}
